@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <meta charset='utf-8'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;
+}
+
+input[type="text"]{
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+input[type="tel"]{
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+input[type="email"]{
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+.multiselect {
+  width: 300px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+/*2nd checkbox*/
+#checkboxes2 {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes2 label {
+  display: block;
+}
+
+#checkboxes2 label:hover {
+  background-color: #1e90ff;
+}
+</style>
+  </head>
+  <body>
+    <div class="container">
+          <h1>F4 - Free Tally Training Registration Form:</h1>
+    <p>Kindly fill up the form with care and accuracy. You will be contacted by our GENESIS Coordinator soon.
+</p>
+    <!-- One "tab" for each step in the form: -->
+
+    <!-- Contact Form - sent to a Google Sheet -->
+    <form id='foo' action="post">
+      <div class="tab">
+    <p><input placeholder="What is your name?..." oninput="this.className = ''" name="name" type="text"></p>
+    <p>What is your gender? </p>
+    <input type="radio" name="gender" oninput="this.className = ''" value="male"><label>Male</label>
+    <input type="radio" name="gender" oninput="this.className = ''" value="Female"><label>Female</label>
+    <p><select id="age-limit" name="age-limit">
+      <option value="">What is your age?</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+      <option value="35">35</option>
+    </select></p>
+  <p><input id="phone" type="tel" name="phone" placeholder="What is your mobile number? "></p>
+  <p><input type="email" name="email" placeholder="What is your email id?"> </p>
+  <p><input type="text" name="text" placeholder="Where is your residence/office located? "> </p>
+ <!--select box with multiselect checkbox-->
+
+    <div class="multiselect">
+    <div class="selectBox" onclick="showCheckboxes()">
+      <select>
+        <option>What is your education background?</option>
+      </select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">
+
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="SSLC"/>SSLC
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="HSC"/>HSC / +2
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="B.Com"/>B.Com
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BBA"/>BBA
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BCA"/>BCA
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BSc"/>BSc
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BA"/>BA
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="BE"/>BE
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="M.Com"/>M.Com
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="MBA"/>MBA
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="MCA"/>MCA
+        <input type="checkbox" id="educational-background" name="educational-background"onClick="checkbox();" value="MSc"/>MSc
+
+
+    </div>
+    <input type="text" id="education-status" name="education-status" style="display:none;"><br>
+
+  </div>
+
+
+  </div><br>
+  <div class="tab">
+    <p></p>
+    <select class="occupation" name="occupation" style="padding:10px;">
+      <option value="What are you currently doing?">What are you currently doing?</option>
+      <option value="Working & searching for a better job">Working & searching for a better job</option>
+      <option value="Unemployed & searching for a Job">Unemployed & searching for a Job</option>
+      <option value="Studying">Studying</option>
+      <option value="Doing Business">Doing Business</option>
+    </select><br><br>
+
+    <p style="padding-left:6px;">What do you know already? </p>
+    <input type="checkbox" name="knowledge-of" id="knowledge-of" onclick="add_sub(this);" value="Knowledge in Accounts"><label>Knowledge in Accounts.</label><br>
+    <input type="checkbox" name="knowledge-of" id="knowledge-of" onclick="add_sub(this);" value="Knowledge in Tally"><label>Knowledge in Tally.</label><br>
+    <input type="checkbox" name="knowledge-of" id="knowledge-of" onclick="add_sub(this);" value="Knowledge in GST"><label>Knowledge in GST.</label><br>
+    <input type="checkbox" name="knowledge-of" id="knowledge-of" onclick="add_sub(this);" value="Knowledge in Payroll"><label>Knowledge in Payroll.</label><br>
+    <input type="checkbox" name="knowledge-of" id="knowledge-of" onclick="add_sub(this);" value="Knowledge in MS-Office"><label>Knowledge in MS-Office.</label><br>
+    <input type="checkbox" name="knowledge-of" id="knowledge-of" onclick="add_sub(this);" value="Knowledge in Typing"><label>Knowledge in Typing.</label><br>
+
+  <br>
+  <textarea id="knowledge" name="knowledge" rows="5" cols="35" onclick="this.focus();this.select();" style="display:none;">
+  </textarea>
+  </div>
+
+
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      <div id='success'><br> </div>
+       <button id="submit" type='submit'>Submit</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+
+  </div>
+
+    </form>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script src='google-script.js'></script>
+  <script src='extra-scripts.js'></script>
+
+</html>

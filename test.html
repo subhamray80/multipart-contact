@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script type="text/javascript">
+function add_sub(el){
+if (el.checked)
+el.form.elements['type'].value+=el.value;
+else{
+var re=new RegExp('(.*)'+el.value+'(.*)$');
+el.form.elements['type'].value=el.form.elements['type'].value.replace(re,'$1$2');
+}
+}
+</script>
+</head>
+<body>
+
+<form name="form1" method=post>
+<textarea name="type" rows="5" cols="35" onclick="this.focus();this.select();">
+<html><head><title>Help!</title></head><body>Please help!</body>
+</textarea><br>
+<input type="checkbox" name="bob" id="bob" value="<p>" onclick="add_sub(this);"><label for="bob">&lt;p&gt;</label><br>
+<input type="checkbox" name="bob1" id="bob1" value="<span>" onclick="add_sub(this);"><label for="bob1">&lt;span&gt;</label><br>
+<input type="checkbox" name="bob2" id="bob2" value="<div>" onclick="add_sub(this);"><label for="bob2">&lt;div&gt;</label>
+</form>
+</body>
+</html>
